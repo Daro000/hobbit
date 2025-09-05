@@ -1,6 +1,7 @@
 package com.example.test1
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +18,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val spinner : Spinner = findViewById<Spinner>(R.id.MySpinner)
+
+        val items = listOf("hobbit", "człowiek", "elf", "krasnolud", "czarodziej")
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            items
+
+        )
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinner.adapter = adapter
     }
 
-    val spinner : Spinner = findViewById<Spinner>(R.id.MySpinner)
 
-    val items = listOf("hobbit", "człowiek", "elf", "krasnolud", "czarodziej")
 
 }
