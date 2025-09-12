@@ -6,12 +6,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.RatingBar
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.TimePicker
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -70,28 +73,49 @@ class MainActivity : AppCompatActivity() {
         val summaryTextView : TextView = findViewById<TextView>(R.id.podsumowanie_textview)
 
         summaryButton.setOnClickListener {
-            val name : EditText = findViewById<EditText>(R.id.editText)
+            val name: EditText = findViewById<EditText>(R.id.editText)
 
             val race = spinner.selectedItem.toString()
 
-            val radioGroup : RadioGroup = findViewById<RadioGroup>(R.id.sposob_chodu_radio)
+            val radioGroup = findViewById<RadioGroup>(R.id.sposob_chodu_radio)
 
-            val selectedRadio = findViewById<RadioGroup>(radioGroup.checkedRadioButtonId)
+            val selectedRadioId = radioGroup.checkedRadioButtonId
 
-            //val priotytet = selectedRadio. ?: ""
+            val selectedRadio = findViewById<RadioButton?>(selectedRadioId)
 
-            val eq1 : CheckBox = findViewById<CheckBox>(R.id.checkbox1)
-            val eq2 : CheckBox = findViewById<CheckBox>(R.id.checkbox2)
-            val eq3 : CheckBox = findViewById<CheckBox>(R.id.checkbox3)
-            val eq4 : CheckBox = findViewById<CheckBox>(R.id.checkbox4)
+            val priorytet = selectedRadio.text ?: "brak"
 
-            val eqlist = listOf(eq1,eq2,eq3,eq4). filter { it.isChecked } . map { it.text }
+            val eq1: CheckBox = findViewById<CheckBox>(R.id.checkbox1)
+            val eq2: CheckBox = findViewById<CheckBox>(R.id.checkbox2)
+            val eq3: CheckBox = findViewById<CheckBox>(R.id.checkbox3)
+            val eq4: CheckBox = findViewById<CheckBox>(R.id.checkbox4)
+
+            val eqlist = listOf(eq1, eq2, eq3, eq4).filter { it.isChecked }.map { it.text }
             val fulleq = eqlist.joinToString(", ")
 
             val ratingbar = findViewById<RatingBar>(R.id.ocena_podrozy_rating)
 
+            val timePicker = findViewById<TimePicker>(R.id.spinner_timepicker)
+            val hour = timePicker.hour
+            val minute = timePicker.minute
+
+            val datePicker = findViewById<DatePicker>(R.id.my_calendar_datepicker)
+            val day = datePicker.dayOfMonth
+            val month = datePicker.month + 1
+            val year = datePicker.year
+
+            val dateTime = String.format("%02d.%02d.%d o %02d:%02d", day, month, year, hour, minute)
+
+            summaryTextView.text = """
+            Bohater: $name ($race)
+            Priorytet: $priorytet
+            Wyposażenie: $fulleq
+            Morale: $ratingbar/5
+            Termin: $dateTime
+            """.trimIndent()
 
         }
+
 
 
 
@@ -99,4 +123,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-}
+    }
+
+
+
