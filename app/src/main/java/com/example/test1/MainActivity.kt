@@ -1,7 +1,10 @@
 package com.example.test1
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +24,28 @@ class MainActivity : AppCompatActivity() {
 
         val spinner : Spinner = findViewById<Spinner>(R.id.MySpinner)
 
-        val items = listOf("hobbit", "człowiek", "elf", "krasnolud", "czarodziej")
+        val postacie : ImageView = findViewById<ImageView>(R.id.Postacie)
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent:AdapterView<*>, view: View?, position: Int, id:Long) {
+                when(position){
+                    1 -> postacie.setImageResource(R.drawable.pierscien)
+                    2 -> postacie.setImageResource(R.drawable.miecz)
+                    3 -> postacie.setImageResource(R.drawable.luk)
+                    4 -> postacie.setImageResource(R.drawable.topor)
+                    5 -> postacie.setImageResource(R.drawable.rozdzka)
+                    else -> postacie.setImageResource(R.drawable.frodo)
+
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+
+        }
+
+
+        val items = listOf("wybierz postac","hobbit", "człowiek", "elf", "krasnolud", "czarodziej")
 
         val adapter = ArrayAdapter(
             this,

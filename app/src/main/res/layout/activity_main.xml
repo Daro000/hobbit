@@ -28,17 +28,16 @@
         android:orientation="horizontal">
 
 
-    <Spinner
-        android:id="@+id/MySpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        <Spinner
+            android:id="@+id/MySpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
         <ImageView
+            android:id="@+id/Postacie"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/frodo"
-            ></ImageView>
+            android:src="@drawable/frodo" />
     </LinearLayout>
 
 
@@ -59,6 +58,7 @@
         android:padding="10dp" />
 
     <Switch
+        android:id="@+id/special_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -78,21 +78,25 @@
         android:gravity="center_horizontal">
 
         <CheckBox
+            android:id="@+id/checkbox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Płaszcz elfa" />
 
         <CheckBox
+            android:id="@+id/checkbox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pochodnia" />
 
         <CheckBox
+            android:id="@+id/checkbox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lembasy" />
 
         <CheckBox
+            android:id="@+id/checkbox4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tajemny???" />
@@ -118,6 +122,7 @@
 
 
         <RadioGroup
+            android:id="@+id/sposob_chodu_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -155,6 +160,7 @@
             />
 
     <SeekBar
+        android:id="@+id/seekbar_marsz"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:max="100"
@@ -162,6 +168,7 @@
         />
 
         <TextView
+            android:id="@+id/textview_czas_marszu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -256,6 +263,7 @@
         />
 
     <RatingBar
+        android:id="@+id/ocena_podrozy_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
@@ -263,6 +271,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/podsumowanie_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Podsumowanie:"
