@@ -4,8 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RadioGroup
+import android.widget.RatingBar
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -57,6 +63,38 @@ class MainActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinner.adapter = adapter
+
+
+        val summaryButton : Button = findViewById<Button>(R.id.summaryButton)
+
+        val summaryTextView : TextView = findViewById<TextView>(R.id.podsumowanie_textview)
+
+        summaryButton.setOnClickListener {
+            val name : EditText = findViewById<EditText>(R.id.editText)
+
+            val race = spinner.selectedItem.toString()
+
+            val radioGroup : RadioGroup = findViewById<RadioGroup>(R.id.sposob_chodu_radio)
+
+            val selectedRadio = findViewById<RadioGroup>(radioGroup.checkedRadioButtonId)
+
+            //val priotytet = selectedRadio. ?: ""
+
+            val eq1 : CheckBox = findViewById<CheckBox>(R.id.checkbox1)
+            val eq2 : CheckBox = findViewById<CheckBox>(R.id.checkbox2)
+            val eq3 : CheckBox = findViewById<CheckBox>(R.id.checkbox3)
+            val eq4 : CheckBox = findViewById<CheckBox>(R.id.checkbox4)
+
+            val eqlist = listOf(eq1,eq2,eq3,eq4). filter { it.isChecked } . map { it.text }
+            val fulleq = eqlist.joinToString(", ")
+
+            val ratingbar = findViewById<RatingBar>(R.id.ocena_podrozy_rating)
+
+
+        }
+
+
+
     }
 
 
