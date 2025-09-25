@@ -1,6 +1,7 @@
 package com.example.test1
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,6 +13,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.RatingBar
+import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
@@ -21,6 +23,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private var countDownTimer: CountDownTimer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
 
         val spinner : Spinner = findViewById<Spinner>(R.id.MySpinner)
 
@@ -54,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
         val items = listOf("wybierz postac","hobbit", "człowiek", "elf", "krasnolud", "czarodziej")
 
         val adapter = ArrayAdapter(
@@ -68,12 +76,25 @@ class MainActivity : AppCompatActivity() {
         spinner.adapter = adapter
 
 
+        val seekBar: SeekBar = findViewById(R.id.seekbar_marsz)
+        val seekBarText : TextView = findViewById<TextView>(R.id.textview_czas_marszu)
+        seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                seekBarText.text = "${progress}h"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
+
         val summaryButton : Button = findViewById<Button>(R.id.summaryButton)
 
         val summaryTextView : TextView = findViewById<TextView>(R.id.podsumowanie_textview)
 
         summaryButton.setOnClickListener {
             val name: EditText = findViewById<EditText>(R.id.editText)
+
+            val nameText = name.text.toString()
 
             val race = spinner.selectedItem.toString()
 
@@ -94,6 +115,7 @@ class MainActivity : AppCompatActivity() {
             val fulleq = eqlist.joinToString(", ")
 
             val ratingbar = findViewById<RatingBar>(R.id.ocena_podrozy_rating)
+            val rating = ratingbar.rating
 
             val timePicker = findViewById<TimePicker>(R.id.spinner_timepicker)
             val hour = timePicker.hour
@@ -106,11 +128,13 @@ class MainActivity : AppCompatActivity() {
 
             val dateTime = String.format("%02d.%02d.%d o %02d:%02d", day, month, year, hour, minute)
 
+
+
             summaryTextView.text = """
-            Bohater: $name ($race)
+            Bohater: $nameText ($race)
             Priorytet: $priorytet
             Wyposażenie: $fulleq
-            Morale: $ratingbar/5
+            Morale: $rating/5
             Termin: $dateTime
             """.trimIndent()
 
