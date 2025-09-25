@@ -1,5 +1,6 @@
 package com.example.test1
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -7,14 +8,17 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.Chronometer
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.RatingBar
 import android.widget.SeekBar
 import android.widget.Spinner
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.TimePicker
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private var countDownTimer: CountDownTimer? = null
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -91,7 +96,66 @@ class MainActivity : AppCompatActivity() {
 
         val summaryTextView : TextView = findViewById<TextView>(R.id.podsumowanie_textview)
 
+        val chronometer : Chronometer = findViewById(R.id.myChronometr)
+        val startbutton : Button = findViewById(R.id.startButton)
+        val stopButton : Button = findViewById(R.id.stopButton)
+        val resetButton : Button = findViewById(R.id.restetButton)
+
+        var isRunning = false
+
+        startbutton.setOnClickListener {
+            if(!isRunning){
+                chronometer.start()
+                isRunning = true
+            }
+        }
+
+        stopButton.setOnClickListener {
+            if (isRunning) {
+                chronometer.stop()
+                isRunning = false
+            }
+        }
+
+        resetButton.setOnClickListener {
+            chronometer.stop()
+            chronometer.base = android.os.SystemClock.elapsedRealtime()
+            isRunning = false
+        }
+
+
+        var progressBar : ProgressBar = findViewById(R.id.progressBar)
+
+        val countdownButton: Button = findViewById(R.id.countdownButton)
+
+        countdownButton.setOnClickListener {
+
+            countDownTimer = object : CountDownTimer(30000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val progress = ((30000 - millisUntilFinished) * 100 / 30000).toInt()
+                    progressBar.progress = progress
+                }
+
+                override fun onFinish() {
+                    progressBar.progress = 100
+                    android.widget.Toast.makeText(
+                        this@MainActivity,
+                        "CZAS NA WYPRAWĘ DO MORDORU!!!!!!!!",
+                        android.widget.Toast.LENGTH_LONG
+                    ).show()
+                }
+            }.start()
+        }
+
+
+        val switchTajneSciezki: Switch = findViewById(R.id.special_switch)
+
         summaryButton.setOnClickListener {
+
+
+            val tajneSciezki = if (switchTajneSciezki.isChecked) "Tak" else "Nie"
+
+
             val name: EditText = findViewById<EditText>(R.id.editText)
 
             val nameText = name.text.toString()
@@ -128,12 +192,18 @@ class MainActivity : AppCompatActivity() {
 
             val dateTime = String.format("%02d.%02d.%d o %02d:%02d", day, month, year, hour, minute)
 
+            val czasMarszu = seekBar.progress
+
+
+
 
 
             summaryTextView.text = """
             Bohater: $nameText ($race)
             Priorytet: $priorytet
             Wyposażenie: $fulleq
+            Tajne szlaki elfów: $tajneSciezki
+            Czas marszu: ${czasMarszu}h
             Morale: $rating/5
             Termin: $dateTime
             """.trimIndent()

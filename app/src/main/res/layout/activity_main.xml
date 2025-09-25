@@ -4,289 +4,479 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<LinearLayout
-    android:id="@+id/main"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="Wpisz Imie"
-        android:inputType="text"
-        android:textAlignment="center" />
+    android:background="@color/background_dark">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <Spinner
-            android:id="@+id/MySpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-
-        <ImageView
-            android:id="@+id/Postacie"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/frodo" />
-    </LinearLayout>
-
-
-    <TimePicker
-        android:id="@+id/spinner_timepicker"
-        android:layout_width="wrap_content"
-        android:layout_height="83dp"
-        android:layout_gravity="center"
-        android:timePickerMode="spinner"
-        />
-
-    <DatePicker
-        android:id="@+id/my_calendar_datepicker"
-        android:layout_width="wrap_content"
-        android:layout_height="396dp"
-        android:layout_margin="10dp"
-        android:datePickerMode="calendar"
-        android:padding="10dp" />
-
-    <Switch
-        android:id="@+id/special_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="tajemny korytarz elfa" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:text="Dodatkowe wyposazenie:"
-        android:textSize="16dp" />
-
-    <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-        <CheckBox
-            android:id="@+id/checkbox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Płaszcz elfa" />
-
-        <CheckBox
-            android:id="@+id/checkbox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pochodnia" />
-
-        <CheckBox
-            android:id="@+id/checkbox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lembasy" />
-
-        <CheckBox
-            android:id="@+id/checkbox4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tajemny???" />
-
-    </LinearLayout>
 
         <TextView
-            android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Sposób chodu:"
-        android:layout_gravity="center"
-            />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-
-
-        <RadioGroup
-            android:id="@+id/sposob_chodu_radio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:text="🗡️ PLANER WYPRAWY DO MORDORU ⚔️"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/gold"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp" />
 
-            <RadioButton
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👤 WYBÓR BOHATERA"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Wpisz imię bohatera"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:background="@color/input_background"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:id="@+id/MySpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/input_background"
+                    android:padding="8dp"
+                    android:layout_marginEnd="12dp" />
+
+                <ImageView
+                    android:id="@+id/Postacie"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/frodo"
+                    android:background="@color/image_background"
+                    android:padding="8dp"
+                    android:elevation="2dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📅 TERMIN WYPRAWY"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <TimePicker
+                android:id="@+id/spinner_timepicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ukryty"/>
+                android:layout_gravity="center"
+                android:timePickerMode="spinner"
+                android:background="@color/input_background"
+                android:layout_marginBottom="12dp" />
 
-            <RadioButton
+            <DatePicker
+                android:id="@+id/my_calendar_datepicker"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:datePickerMode="calendar"
+                android:background="@color/input_background"
+                android:padding="8dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="✨ OPCJE SPECJALNE"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <Switch
+                android:id="@+id/special_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="zbalansowany"/>
+                android:layout_gravity="center"
+                android:text="🧝 Tajne szlaki elfów"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:padding="8dp" />
+        </LinearLayout>
 
-            <RadioButton
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🎒 WYPOSAŻENIE"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2">
+
+                <CheckBox
+                    android:id="@+id/checkbox1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="🧥 Płaszcz elfa"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="🕯️ Pochodnia"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="🍞 Lembasy"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="❓ Tajemny przedmiot"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+            </GridLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚶 PRIORYTET MARSZU"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <RadioGroup
+                android:id="@+id/sposob_chodu_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🤫 Ukryty"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="⚖️ Zbalansowany"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🏃 Forsowny"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⏱️ CZAS TRWANIA MARSZU"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <SeekBar
+                    android:id="@+id/seekbar_marsz"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:id="@+id/textview_czas_marszu"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="0h"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:background="@color/input_background"
+                    android:padding="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💪 TRENING KONDYCYJNY"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Chronometer
+                    android:id="@+id/myChronometr"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:background="@color/input_background"
+                    android:padding="12dp"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="START"
+                    android:backgroundTint="@color/button_success"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/stopButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STOP"
+                    android:backgroundTint="@color/button_warning"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="4dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/restetButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RESET"
+                android:backgroundTint="@color/button_danger"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⏰ ODLICZANIE DO WYMARSZU"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/countdownButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚀 ROZPOCZNIJ ODLICZANIE"
+                android:backgroundTint="@color/button_primary"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⭐ OCENA MORALE DRUŻYNY"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/gold"
+                android:layout_marginBottom="12dp" />
+
+            <RatingBar
+                android:id="@+id/ocena_podrozy_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="forsowny"/>
-        </RadioGroup>
+                android:layout_gravity="center"
+                android:progressTint="@color/gold"
+                android:secondaryProgressTint="@color/text_secondary" />
+        </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Czas trwania marszu"
-            />
-
-    <SeekBar
-        android:id="@+id/seekbar_marsz"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:layout_marginRight="10dp"
-        />
-
-        <TextView
-            android:id="@+id/textview_czas_marszu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trening kondycyjny:"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            />
-
-        <Chronometer
-            android:layout_gravity="center"
-            android:id="@+id/myChronometr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-             />
 
         <Button
-            android:id="@+id/startButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/summaryButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center"
-            android:text="start"
-            android:backgroundTint="#123abc"/>
+            android:text="📋 ZATWIERDŹ PLAN WYPRAWY"
+            android:backgroundTint="@color/button_primary"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:elevation="4dp" />
 
-        <Button
-            android:id="@+id/stopButton"
-            android:layout_width="wrap_content"
+
+        <TextView
+            android:id="@+id/podsumowanie_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="stop"
-            android:backgroundTint="#600ccc"/>
-
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/restetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="reset"
-        android:backgroundTint="#923ccc"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Odlicznie do wymarszu"
-        android:layout_gravity="center"
-        />
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            android:text="📜 PODSUMOWANIE WYPRAWY:\n\nWybierz opcje i zatwierdź plan"
+            android:background="@color/summary_background"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:padding="16dp"
+            android:layout_margin="16dp"
+            android:elevation="2dp" />
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Morale podrozy:"
-        android:layout_gravity="center"
-        />
-
-    <RatingBar
-        android:id="@+id/ocena_podrozy_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/summaryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zatwierdź plan"
-        android:layout_gravity="center"
-        android:layout_margin="16dp" />
-
-    <TextView
-        android:id="@+id/podsumowanie_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Podsumowanie:"
-        android:layout_gravity="center"
-        />
-
-
-</LinearLayout>
-
 </ScrollView>
